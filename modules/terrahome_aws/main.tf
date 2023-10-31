@@ -46,14 +46,14 @@ error_document {
 resource "aws_s3_object" "index_html" {
   bucket = aws_s3_bucket.website_bucket.bucket
   key    = "index.html"
-  source = var.index_html_file_path
+  #source = var.index_html_file_path
   content_type = "text/html"
-  # source = "${path.root}/public.index.html"
+  source = "${path.root}/public.index.html"
   
   #The filemd5() function is available in Terraform 0.11.12 and later
   #For Terraform 0.11.11 and earlier, use the md5() function and the file() function:
   #etag = file(var.index_html_file_path)
-  # etag = filemd5("path/to/file")
+  #etag = filemd5("path/to/file")
 }
 
 resource "aws_s3_object" "error_html" {
