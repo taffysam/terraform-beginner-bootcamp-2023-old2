@@ -16,6 +16,36 @@ variable "bucket_name" {
     }
 
 
+variable "error_html_file_path" {
+  description = "Path to the index.html file"
+  type        = string
+
+  validation {
+    condition     = length(var.error_html_file_path) > 0
+    error_message = "The specified error.html file path must not be empty."
+  }
+}
+
+
+variable "index_html_file_path" {
+  description = "Path to the index.html file"
+  type        = string
+
+  validation {
+    condition     = length(var.index_html_file_path) > 0
+    error_message = "The specified index.html file path must not be empty."
+  }
+}
+
+resource "null_resource" "validate_file_path" {
+  triggers = {
+    index_html_file_path = var.index_html_file_path
+    error_html_file_path = var.error_html_file_path
+  }
+
+}
+
+
 
 
 #variable "teacherseat_user_uuid" {
