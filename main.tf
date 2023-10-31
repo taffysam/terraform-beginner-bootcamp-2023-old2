@@ -1,31 +1,15 @@
 
+terraform {
 
-resource "random_id" "bucket" {
-  byte_length = 8
-}
-
-resource "random_string" "bucket_name" {
-    length = 32
-    special = false
-    lower = true
-    upper = false 
-
-}
-
-# https://developer.hashicorp.com/terraform/language/modules/sources
-
-resource "aws_s3_bucket" "website_bucket" {
-  bucket = random_string.bucket_name.result
-
-  tags = {
-    Useruuid = var.user_uuid
+#    terratowns = {
+#      source  = "local.providers/local/terratowns"
+#      version = "1.0.0"
+#    }
   }
-}
 
-#resource "aws_s3_bucket" "website_bucket" {
-#  bucket = var.bucket_name
-#  tags = {
-#    Useruuid = var.user_uuid
-#  }
-#}
+  module "terrahome_aws" {
+    source = "./modules/terrahome_aws"
+    user_uuid = var.user_uuid
+    bucket_name = var.bucket_name
+  }
 
