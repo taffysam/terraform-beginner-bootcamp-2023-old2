@@ -1,40 +1,3 @@
-terraform {
-
-  cloud {
-    organization = "Tafadzwa"
-
-    workspaces {
-      name = "terrahome-1"
-    }
-  }
-
-  required_providers {
-
-    random = {
-    source = "hashicorp/random"
-    version = "3.5.1"
-
-    }
-
-    aws = {
-    source = "hashicorp/aws"
-    version = "5.16.2"
-
-    }
-#    terratowns = {
-#      source  = "local.providers/local/terratowns"
-#      version = "1.0.0"
-#    }
-  }
-}
-
-provider "random" {
-
-}
-
-provider "aws" {
-
-}
 
 
 resource "random_id" "bucket" {
@@ -53,6 +16,10 @@ resource "random_string" "bucket_name" {
 
 resource "aws_s3_bucket" "example" {
   bucket = random_string.bucket_name.result
+
+  tags = {
+    Useruuid = var.user_uuid
+  }
 }
 
 #resource "aws_s3_bucket" "website_bucket" {
