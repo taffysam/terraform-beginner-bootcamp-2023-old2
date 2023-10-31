@@ -1,9 +1,6 @@
 output "bucket_name" {
- value = aws_s3_bucket.website_bucket
- sensitive = true
-  
-}
+    description = "Bucket name for our static website bucket"
+    value = module.terrahome_aws.bucket_name
+    sensitive = true
 
-#output "s3_website_endpoint" {
-#  value = module.terrahouse_aws.cloudfront_url
-#}
+}
