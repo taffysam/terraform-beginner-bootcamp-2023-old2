@@ -103,7 +103,7 @@ class TerraTownsMockServer < Sinatra::Base
     home.town = town
     home.name = name
     home.description = description
-    home.domain_name = domain_name
+    home.domain_name = $home[domain_name]
     home.content_version = content_version
     
     unless home.valid?
