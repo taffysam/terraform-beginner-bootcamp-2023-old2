@@ -9,7 +9,14 @@ class Home
   include ActiveModel::Validations
   attr_accessor :town, :name, :description, :domain_name, :content_version
 
-  validates :town, presence: true
+  validates :town, presence: true, inclusion: {in: [
+    'Coker Cove',
+    'Melomanic Mansion',
+    'Video Valley',
+    'The-nomad-pad',
+    'gramers-grotos'
+
+  ]}
   validates :name, presence: true
   validates :description, presence: true
   validates :domain_name, 
