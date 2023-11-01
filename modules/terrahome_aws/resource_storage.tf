@@ -35,9 +35,11 @@ resource "aws_s3_object" "upload_assets" {
   bucket = aws_s3_bucket.website_bucket.bucket
   key    = "assets/${each.key}"
   #source = "${var.public_path}/assets/${each.key}"
-  
+  source = "${path.root}public/assets/${each.key}"
 
-  etag = filemd5("${var.public_path}/assets/${each.key}")
+  etag = filemd5("${path.root}public/assets/${each.key}")
+
+  #etag = filemd5("${var.public_path}/assets/${each.key}")
   lifecycle {
     replace_triggered_by = [terraform_data.content_version.output]
     ignore_changes = [etag]
