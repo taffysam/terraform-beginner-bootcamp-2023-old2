@@ -102,21 +102,29 @@ resource "aws_s3_bucket_policy" "bucket_policy" {
   })
 }
 
-resource "terraform_data" "invalidate_cache"{
-  triggers_replace = terraform_data.content_version.output 
+#resource "terraform_data" "invalidate_cache"{
+#  triggers_replace = terraform_data.content_version.output 
+
+#  provisioner "local-exec" {
+#    # https://developer.hashicorp.com/terraform/language/expressions/strings
+#    command = aws cloudfront create-invalidation --distribution-id ${aws_cloudfront_distribution.s3_distribution.id} --paths "/*"
+   
+
+    #command = "/usr/local/bin/aws cloudfront create-invalidation --distribution-id EAQ48G0KL0N2K --paths '/*'"
+#}
+
+#  }
+
+  resource "null_resource" "invalidate_cache" {
+  triggers = {
+    distribution_id = aws_cloudfront_distribution.s3_distribution.id
+  }
 
   provisioner "local-exec" {
-    # https://developer.hashicorp.com/terraform/language/expressions/strings
-    #command = <<-EOT
-    #  aws cloudfront create-invalidation \
-    #    --distribution-id ${aws_cloudfront_distribution.s3_distribution.id} \
-    #    --paths "/*"
-    #EOT
-
-    command = "/usr/local/bin/aws cloudfront create-invalidation --distribution-id EAQ48G0KL0N2K --paths '/*'"
+    command = "aws cloudfront create-invalidation --distribution-id ${aws_cloudfront_distribution.s3_distribution.id} --paths '/*'"
+  }
 }
 
-  }
   
 
 
