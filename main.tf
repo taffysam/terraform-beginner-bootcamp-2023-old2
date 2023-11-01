@@ -1,12 +1,14 @@
 terraform {
   
-}
 
-provider "terratowns" {
+ required_providers "terratowns" {
   endpoint  = var.terratowns_endpoint
   user_uuid = var.teacherseat_user_uuid
   token     = var.terratowns_access_token
 }
+}
+
+
 
 #  module "terrahome_aws" {
 #    source = "./modules/terrahome_aws"
