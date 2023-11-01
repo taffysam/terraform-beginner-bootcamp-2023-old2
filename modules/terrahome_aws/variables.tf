@@ -43,3 +43,9 @@ resource "null_resource" "validate_file_path" {
   }
 
 }
+
+variable "public_path" {
+  description = "The file path for the public directory"
+  type        = string
+}
+

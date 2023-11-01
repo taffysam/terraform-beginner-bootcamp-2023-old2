@@ -19,7 +19,7 @@ variable "bucket_name" {
 variable "error_html_file_path" {
   description = "Path to the index.html file"
   type        = string
-  default = "Yo have reached the error Page"
+  default = "public/error.html"
   validation {
     condition     = length(var.error_html_file_path) > 0
     error_message = "The specified error.html file path must not be empty."
@@ -30,7 +30,7 @@ variable "error_html_file_path" {
 variable "index_html_file_path" {
   description = "Path to the index.html file"
   type        = string
-  default = "Thanks for reaching our page"
+ default = "public/index.html"
   validation {
     condition     = length(var.index_html_file_path) > 0
     error_message = "The specified index.html file path must not be empty."
@@ -46,7 +46,12 @@ resource "null_resource" "validate_file_path" {
 }
 
 
+variable "public_path" {
+  description = "The file path for the public directory"
+  type        = string
+  default     = "/public/index.html"
 
+}
 
 #variable "teacherseat_user_uuid" {
 #  description = "An example input variable with UUID validation"
