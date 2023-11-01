@@ -28,10 +28,3 @@ terraform {
   }
 }
 
-provider "random" {
-
-}
-
-provider "aws" {
-
-}
