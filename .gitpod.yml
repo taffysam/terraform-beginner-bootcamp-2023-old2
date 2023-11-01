@@ -19,7 +19,7 @@ tasks:
       source ./bin/set_tf_alias.sh
   - name: sinatra
     before: | 
-      cd $PROJECT_ROOT      
+      cd /workspace/terraform-beginner-bootcamp-2023      
       cd terratowns_mock_server
       bundle install 
       bundle exec ruby server.rb
