@@ -26,7 +26,6 @@ variable "error_html_file_path" {
   }
 }
 
-
 variable "index_html_file_path" {
   description = "Path to the index.html file"
   type        = string
@@ -45,7 +44,6 @@ resource "null_resource" "validate_file_path" {
 
 }
 
-
 variable "public_path" {
   description = "The file path for the public directory"
   type        = string
@@ -53,14 +51,15 @@ variable "public_path" {
 
 }
 
-#variable "teacherseat_user_uuid" {
-#  description = "An example input variable with UUID validation"
-#  type        = string
-#  #default     = "0071972e-6023-468b-9eab-4f109beb9e81"
-#
-#  validation {
-#    condition     = can(regex("^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$", var.teacherseat_user_uuid))
-#    error_message = "example_uuid must be a valid UUID. /modules/terrahouse_aws/variables.tf"
-#  }
-#}
+variable "teacherseat_user_uuid" {
+  description = "An example input variable with UUID validation"
+  type        = string
+  default     = "0071972e-6023-468b-9eab-4f109beb9e81"
+
+  validation {
+    condition     = can(regex("^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$", var.teacherseat_user_uuid))
+    error_message = "example_uuid must be a valid UUID. /modules/terrahouse_aws/variables.tf"
+  }
+}
+
 
