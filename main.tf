@@ -1,9 +1,18 @@
 terraform {
-  
-
+ required_providers {
+   terratowns = {
+      source  = "local.providers/local/terratowns"
+      version = "1.0.0"
+ } 
 
 }
+}
 
+ provider "terratowns" {
+  endpoint  = var.terratowns_endpoint
+  user_uuid = var.teacherseat_user_uuid
+  token     = var.terratowns_access_token
+}
 
 
 #  module "terrahome_aws" {
