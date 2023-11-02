@@ -37,3 +37,14 @@ DESCRIPTION
   town = "missingo"
   content_version = var.home_compass.content_version
 }
+
+
+module "home_compass" {
+source = "./modules/terrahome_aws"
+user_uuid = var.teacherseat_user_uuid
+public_path = var.public_path
+error_html_file_path = var.error_html_file_path
+index_html_file_path = var.index_html_file_path
+bucket_name = var.bucket_name
+#context_version = var.content_version
+}

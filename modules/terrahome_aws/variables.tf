@@ -15,21 +15,21 @@ variable "bucket_name" {
     default     = "default-bucket-name"
     }
 
+
 variable "error_html_file_path" {
   description = "Path to the index.html file"
   type        = string
-
+  default = "public/error.html"
   validation {
     condition     = length(var.error_html_file_path) > 0
     error_message = "The specified error.html file path must not be empty."
   }
 }
 
-
 variable "index_html_file_path" {
   description = "Path to the index.html file"
   type        = string
-
+ default = "public/index.html"
   validation {
     condition     = length(var.index_html_file_path) > 0
     error_message = "The specified index.html file path must not be empty."
@@ -47,6 +47,8 @@ resource "null_resource" "validate_file_path" {
 variable "public_path" {
   description = "The file path for the public directory"
   type        = string
+  default     = "/public/index.html"
+
 }
 
 variable "teacherseat_user_uuid" {
@@ -59,3 +61,29 @@ variable "teacherseat_user_uuid" {
     error_message = "example_uuid must be a valid UUID. /modules/terrahouse_aws/variables.tf"
   }
 }
+
+variable "terratowns_access_token" {
+  type = string
+}
+
+variable "terratowns_endpoint" {
+  type = string
+}
+
+variable "content_version" {
+  description = "Version number for your content"
+  type        = number
+}
+
+variable "assets_path" {
+  type        = string
+  description = "Path to the assets folder"
+}
+
+variable "home_compass" {
+  type = object({
+    public_path = string
+    content_version = number
+  })
+}
+
