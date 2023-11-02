@@ -47,4 +47,9 @@ error_html_file_path = var.error_html_file_path
 index_html_file_path = var.index_html_file_path
 bucket_name = var.bucket_name
 #context_version = var.content_version
+terratowns_endpoint = var.terratowns_endpoint
+content_version = var.content_version
+assets_path = var.assets_path
+home_compass = var.home_compass
+terratowns_access_token = var.terratowns_access_token
 }

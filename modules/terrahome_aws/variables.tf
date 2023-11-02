@@ -70,11 +70,6 @@ variable "terratowns_endpoint" {
   type = string
 }
 
-variable "content_version" {
-  description = "Version number for your content"
-  type        = number
-}
-
 variable "assets_path" {
   type        = string
   description = "Path to the assets folder"
