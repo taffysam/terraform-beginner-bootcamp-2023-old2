@@ -5,7 +5,16 @@ terraform {
       version = "1.0.0"
     }
   }
+
+  cloud {
+   organization = "Tafadzwa"
+   workspaces {
+     name = "terrahome-1"
 }
+}
+}
+
+
 
 provider "terratowns" {
   endpoint  = var.terratowns_endpoint
@@ -35,7 +44,8 @@ Enjoy your adventure, and may you find the treasures that await you in Adventure
 DESCRIPTION
   domain_name = module.home_compass.domain_name
   town = "missingo"
-  content_version = var.home_compass.content_version
+  #content_version = var.home_compass.content_version
+  content_version = 3
 }
 
 
@@ -50,6 +60,6 @@ bucket_name = var.bucket_name
 terratowns_endpoint = var.terratowns_endpoint
 content_version = var.content_version
 assets_path = var.assets_path
-home_compass = var.home_compass
+#home_compass = var.home_compass
 terratowns_access_token = var.terratowns_access_token
 }

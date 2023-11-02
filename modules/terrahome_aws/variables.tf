@@ -75,10 +75,10 @@ variable "assets_path" {
   description = "Path to the assets folder"
 }
 
-variable "home_compass" {
-  type = object({
-    public_path = string
-    content_version = number
-  })
-}
+#variable "home_compass" {
+#  type = object({
+#    public_path = string
+#    content_version = number
+#  })
+#}
 

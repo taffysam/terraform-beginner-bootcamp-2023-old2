@@ -8,10 +8,10 @@ output "bucket_name" {
 #      value = aws_s3_bucket_website_configuration.website_configuration
 #}
 
-output "s3_bucket_name" {
-  description = "Value that is unique."
-  value       = aws_s3_bucket.website_bucket.id
-}
+#output "s3_bucket_name" {
+#  description = "Value that is unique."
+#  value       = aws_s3_bucket.website_bucket.id
+#}
 
 output "user_uuid" {
   description = "Value that is unique."

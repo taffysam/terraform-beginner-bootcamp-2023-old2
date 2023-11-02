@@ -1,13 +1,6 @@
 terraform {
 
-  cloud {
-    organization = "Tafadzwa"
-
-    workspaces {
-      name = "terrahome-1"
-    }
-  }
-}
+ }
 # required_providers {
 #
 #    random = {
