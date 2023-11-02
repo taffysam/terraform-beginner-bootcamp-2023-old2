@@ -15,7 +15,6 @@ terraform {
 }
 
 
-
 provider "terratowns" {
   endpoint  = var.terratowns_endpoint
   user_uuid = var.teacherseat_user_uuid
@@ -23,17 +22,20 @@ provider "terratowns" {
 }
 
 
-#  module "terrahome_aws" {
-#    source = "./modules/terrahome_aws"
-#    user_uuid = var.user_uuid
-#    bucket_name = var.bucket_name
-#    error_html_file_path = var.error_html_file_path
-#    index_html_file_path = var.index_html_file_path
-#    public_path = var.public_path
-#  }
+  #module "terrahome_aws" {
+  #  source = "./modules/terrahome_aws"
+  #  user_uuid = var.user_uuid
+  #  bucket_name = var.bucket_name
+  #  public_path = var.hide_public_path
+  #  error_html_file_path = var.error_html_file_path
+  #  index_html_file_path = var.index_html_file_path
+  #  assets_path = var.assets_path
+  #  terratowns_access_token = var.terratowns_access_token
+  #  terratowns_endpoint = var.terratowns_endpoint
+  #}
 
 
-resource "terratowns_home" "home" {
+resource "terratowns_home" "compass" {
 name = "How to play Compass Game"
   description = <<DESCRIPTION
 - Type commands to interact with the game. For example, you can type "go north," "examine the chest," or "talk to the merchant."
@@ -45,21 +47,37 @@ DESCRIPTION
   domain_name = module.home_compass.domain_name
   town = "missingo"
   #content_version = var.home_compass.content_version
-  content_version = 3
+  content_version = var.home_compass.content_version
 }
 
 
 module "home_compass" {
 source = "./modules/terrahome_aws"
 user_uuid = var.teacherseat_user_uuid
-public_path = var.public_path
-error_html_file_path = var.error_html_file_path
-index_html_file_path = var.index_html_file_path
-bucket_name = var.bucket_name
-#context_version = var.content_version
-terratowns_endpoint = var.terratowns_endpoint
-content_version = var.content_version
-assets_path = var.assets_path
-#home_compass = var.home_compass
-terratowns_access_token = var.terratowns_access_token
+public_path = var.compass.public_path
+content_version = var.compass.content_version
+}
+
+module "home_hide" {
+source = "./modules/terrahome_aws"
+user_uuid = var.teacherseat_user_uuid
+public_path = var.hide.public_path
+  content_version = var.hide.content_version
+}
+
+resource "terratowns_home" "hide"{
+  name = "How to play Hide and Seek"
+  description = <<DESCRIPTION
+Hide and seek is a classic outdoor game that is popular among children and is also enjoyed by people of all ages. Here are the basic rules and steps to play hide and seek:
+Choose one player to be the "seeker." The other players will be the "hiders."
+Decide on the boundaries or area where the game will be played. This area could be a backyard, a park, a house, or any other suitable location.
+You can play with different rules or variations. For example, in some versions of the game, hiders can run back to the base without getting tagged by the seeker to avoid being "out."
+Hide and seek is often played outdoors, but you can also play it indoors if you have a suitable space.
+Make sure to set boundaries and establish safety rules to prevent players from going to unsafe areas or getting lost.
+The game is not just for children; adults can also enjoy playing hide and seek for a fun and active social activity.
+Be respectful and considerate of others while hiding. Don't hide in places that could cause harm or damage property.
+DESCRIPTION
+  domain_name = module.hide.domain_name
+  town = "hide-seek"
+  content_version = var.home_hide.content_version
 }

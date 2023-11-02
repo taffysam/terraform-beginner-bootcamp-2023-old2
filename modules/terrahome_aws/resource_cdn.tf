@@ -1,8 +1,8 @@
 # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudfront_origin_access_control
 
 resource "aws_cloudfront_origin_access_control" "default" {
-  name                              = "OAC ${var.bucket_name}"
-  description                       = "Origin Access Controls for Static Website Hosting ${var.bucket_name}"
+  name                              = "OAC ${aws_s3_buckect.website_bucket.id}"
+  description                       = "Origin Access Controls for Static Website Hosting ${aws_s3_buckect.website_bucket.id}"
   origin_access_control_origin_type = "s3"
   signing_behavior                  = "always"
   signing_protocol                  = "sigv4"
@@ -22,15 +22,10 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
 
   enabled             = true
   is_ipv6_enabled     = true
-  comment             = "Static Website hosting for: ${var.bucket_name}"
+  comment             = "Static Website hosting for: ${aws_s3_buckect.website_bucket.id}"
   default_root_object = "index.html"
 
-  #logging_config {
-  #  include_cookies = false
-  #  bucket          = "tafadzwacloudfront-log-terraform2023"
-    #bucket =  "${aws_s3_bucket.tafadzwacloudfront-log-terraform2023.id}.s3.amazonaws.com"
-   #      }
-
+ 
   # Define any aliases (custom domain names) if needed
 
   default_cache_behavior {
