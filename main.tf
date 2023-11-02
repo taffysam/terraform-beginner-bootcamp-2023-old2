@@ -1,11 +1,7 @@
 terraform {
   
 
- required_providers "terratowns" {
-  endpoint  = var.terratowns_endpoint
-  user_uuid = var.teacherseat_user_uuid
-  token     = var.terratowns_access_token
-}
+
 }
 
 
@@ -18,4 +14,3 @@ terraform {
 #    index_html_file_path = var.index_html_file_path
 #    public_path = var.public_path
 #  }
-
