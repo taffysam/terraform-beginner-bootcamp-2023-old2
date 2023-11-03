@@ -5,22 +5,13 @@ terraform {
       version = "1.0.0"
     }
   }
-
-  cloud {
-   organization = "Tafadzwa"
-   workspaces {
-     name = "terrahome-1"
-}
-}
-}
-
+ }
 
 provider "terratowns" {
   endpoint  = var.terratowns_endpoint
   user_uuid = var.teacherseat_user_uuid
   token     = var.terratowns_access_token
 }
-
 
   #module "terrahome_aws" {
   #  source = "./modules/terrahome_aws"
@@ -33,7 +24,13 @@ provider "terratowns" {
   #  terratowns_access_token = var.terratowns_access_token
   #  terratowns_endpoint = var.terratowns_endpoint
   #}
-
+  
+module "home_compass" {
+   source = "./modules/terrahome_aws"
+   user_uuid = var.teacherseat_user_uuid
+   public_path = var.compass.public_path
+   content_version = var.compass.content_version
+}
 
 resource "terratowns_home" "compass" {
 name = "How to play Compass Game"
@@ -50,19 +47,11 @@ DESCRIPTION
   content_version = var.home_compass.content_version
 }
 
-
-module "home_compass" {
-source = "./modules/terrahome_aws"
-user_uuid = var.teacherseat_user_uuid
-public_path = var.compass.public_path
-content_version = var.compass.content_version
-}
-
 module "home_hide" {
-source = "./modules/terrahome_aws"
-user_uuid = var.teacherseat_user_uuid
-public_path = var.hide.public_path
-  content_version = var.hide.content_version
+   source = "./modules/terrahome_aws"
+   user_uuid = var.teacherseat_user_uuid
+   public_path = var.hide.public_path
+   content_version = var.hide.content_version
 }
 
 resource "terratowns_home" "hide"{

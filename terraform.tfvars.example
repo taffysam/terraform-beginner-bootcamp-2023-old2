@@ -5,8 +5,20 @@ index_html_filepath = /terraform-beginner-bootcamp-2023-1/modules/terrahouse_aws
 error_html_filepath = /terraform-beginner-bootcamp-2023-1/modules/terrahouse_aws/public/error.html"
 assets_path="/workspace/terraform-beginner-bootcamp-2023/public/assets"
 content_version=1
-
+teacherseat_user_uuid = "0071972e-6023-468b-9eab-4f109beb9e81"
 
 AWS_DEFAULT_REGION=Region
 AWS_SECRET_ACCESS_KEY=ExamplekeyFFF
 AWS_ACCESS_KEY_ID=ExampleKeyID
+
+UUID = "0071972e-6023-468b-9eab-4f109beb9e81"
+
+
+hide = {
+  public_path = "/workspace/terraform-beginner-bootcamp-2023/public/hide"
+  content_version = 2 
+}
+compass = {
+  public_path = "/workspace/terraform-beginner-bootcamp-2023/public/compass"
+  content_version = 1 
+}
